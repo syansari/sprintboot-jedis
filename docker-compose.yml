@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  app:
+    build: .
+    links:
+      - "redis:redis"
+    ports:
+      - "8080:8080"
+
+  redis:
+    image: redis:4.0.11-alpine
+    command: [ "redis-server", "--protected-mode", "no" ]
+    hostname: "redis"
